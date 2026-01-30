@@ -1,89 +1,227 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yazılım Kulübü</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<body>
+/* GENEL */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #111;
+}
 
-  <header>
-    <div class="header-inner">
-      <div class="brand">
-        <!-- Logo (images/logo.png koy) -->
-        <img class="logo" src="images/logo.svg" alt="Yazılım Kulübü Logo">
-        <h1>Yazılım Kulübü</h1>
-      </div>
+/* HEADER */
+header {
+  background: #222;
+  color: white;
+}
 
-      <nav>
-        <a href="#about">Hakkımızda</a>
-        <a href="#activities">Etkinlikler</a>
-        <a href="#contact">İletişim</a>
-      </nav>
-    </div>
-  </header>
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  <section id="hero">
-    <h2>Geleceği Kodluyoruz</h2>
-    <p>Web, mobil ve yazılım dünyasına adım at!</p>
-    <!-- joinClup hatasını düzelttim -->
-    <button onclick="joinClub()">Kulübe Katıl</button>
-  </section>
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-  <section id="about">
-    <h2>Hakkımızda</h2>
-    <p>
-      Yazılım Kulübü olarak öğrencilerin yazılım, web tasarım ve
-      teknoloji alanlarında gelişmesini amaçlıyoruz.
-    </p>
-  </section>
+.logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
 
-  <section id="activities">
-    <h2>Etkinliklerimiz</h2>
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 16px;
+  font-weight: 600;
+  position: relative;
+}
 
-    <div class="cards">
-      <div class="card">
-        <img class="card-img" src="images/web.svg" alt="Web Tasarım">
-        <h3>Web Tasarım</h3>
-        <p>HTML, CSS ve JavaScript öğreniyoruz.</p>
-      </div>
+/* Menü alt çizgi animasyonu */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
 
-      <div class="card">
-        <img class="card-img" src="images/mobile.svg" alt="Mobil Uygulama">
-        <h3>Mobil Uygulama</h3>
-        <p>Basit mobil uygulamalar geliştiriyoruz.</p>
-      </div>
+nav a:hover::after {
+  width: 100%;
+}
 
-      <div class="card">
-        <img class="card-img" src="images/hackathon.svg" alt="Hackathon">
-        <h3>Hackathon</h3>
-        <p>Takım çalışması ve proje yarışmaları.</p>
-      </div>
-    </div>
-  </section>
+/* ========================= */
+/* HERO (FOTOĞRAFLI ALAN) */
+/* ========================= */
+#hero {
+  min-height: 420px;
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
 
-  <section id="contact">
-    <h2>İletişim</h2>
+  /* FOTOĞRAF + KARARTMA */
+  background-image:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("images/hero.jpg");
 
-    <form onsubmit="return formKontrol()">
-      <input type="text" id="name" placeholder="Adınız" required>
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-      <!-- type="email" yazım hatasını düzelttim -->
-      <input type="email" id="email" placeholder="E-posta" required>
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-      <textarea id="message" placeholder="Mesajınız" rows="5" required></textarea>
+#hero h2 {
+  font-size: 42px;
+  margin-bottom: 12px;
+  animation: slideDown 0.8s ease both;
+}
 
-      <button type="submit">Gönder</button>
-    </form>
-  </section>
+#hero p {
+  font-size: 18px;
+  opacity: 0.95;
+  animation: fadeUp 0.9s ease 0.1s both;
+}
 
-  <footer>
-    <p>© 2026 Yazılım Kulübü</p>
-  </footer>
+#hero button {
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: none;
+  background: white;
+  color: #2575fc;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 12px;
+  animation: popIn 0.6s ease 0.2s both;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+#hero button:hover {
+  transform: translateY(-2px);
+}
 
+/* SECTIONS */
+section {
+  padding: 50px 20px;
+}
+
+/* CARDS */
+.cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #f4f4f4;
+  padding: 20px;
+  flex: 1;
+  min-width: 240px;
+  border-radius: 14px;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover {
+  background: white;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* FORM */
+form {
+  max-width: 420px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #2575fc;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  #hero h2 {
+    font-size: 32px;
+  }
+}
+
+/* ANİMASYONLAR */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
