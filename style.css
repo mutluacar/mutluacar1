@@ -72,7 +72,7 @@ nav a:hover::after{
   /* Eğer images/hero.jpg koyarsan otomatik çalışır */
   background-image:
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("images/hero.svg");
+    url("images/hero.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -219,4 +219,5 @@ footer{
   from{ opacity:0; transform: scale(.96); }
   to{ opacity:1; transform: scale(1); }
 }
+
 
