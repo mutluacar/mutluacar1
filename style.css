@@ -1,84 +1,221 @@
-	*{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	
-	body  {
-		font-family:Arial,sans-serif;
-		line-height:1.6;
-	}
-	header{
-		background:#222;
-		color:white;
-		padding:15px;
-		display:flex;
-		justify-content:space-between;
-		align-items:center;
-	}
-	#hero{
-		background:linear-gradient(120deg,#6a11cb,#2575fc);
-		color:white;
-		text-align:center;
-		padding:60px 20px;
-	}
-	#hero button {
-		margin-top:15px;
-		padding:10px 25px;
-		border:none;
-		background:white;
-		colur:#2575fc;
-		font-size:16px;
-		cursor:poinyer;
-		border-radius:5px;
-	}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-	section{
-		padding:40px 20px;
-	}
-	
-	.cards{
-		display:flex;
-		gap:20px;
-		flex-wrap:wrap;
-	}
-	.card{
-		background:#f4f4f4;
-		padding:20px;
-		flex:1;
-		min-width:200px;
-		border-radius:8px;
-	}
-	form{
-		max-width:400px;
-	}
-	form input,form textarea{
-		width:100%;
-		margin-bottom:10px;
-		padding:10px;
-	}
-	form button{
-			background: #2575fc;
-			color:white;
-			border:none;
-			padding:10px;
-			cursor:pointer;
-			width:100%;
-	}
-	foster{
-		background: #222;
-		color:white;
-		text-align:center;
-		padding:15px;
-	}
-	
-	/*Responsive*/
-	@media (max-width: 768px) {
-		.cards{
-			flex-direction:column;
-		}
-	}
-	
-	
-		
-	
+body  {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #ffffff;
+  color: #111;
+}
+
+/* Header */
+header{
+  background: #222;
+  color: white;
+  padding: 15px;
+}
+
+.header-inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo{
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+nav a{
+  color: white;
+  text-decoration: none;
+  margin-left: 14px;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Menü hover animasyonu (alt çizgi kayarak gelsin) */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background: currentColor;
+  transition: width .25s ease;
+}
+nav a:hover::after{
+  width:100%;
+}
+
+/* Hero: görsel + gradient + giriş animasyonu */
+#hero{
+  min-height: 360px;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+
+  /* Eğer images/hero.jpg koyarsan otomatik çalışır */
+  background-image:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+    url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+#hero h2{
+  font-size: 40px;
+  margin-bottom: 10px;
+  animation: slideDown .8s ease both;
+}
+
+#hero p{
+  font-size: 18px;
+  opacity: .95;
+  animation: fadeUp .9s ease .1s both;
+}
+
+#hero button {
+  margin-top: 15px;
+  padding: 10px 25px;
+  border: none;
+  background: white;
+  color: #2575fc;      /* colur -> color düzeltildi */
+  font-size: 16px;
+  cursor: pointer;     /* poinyer -> pointer düzeltildi */
+  border-radius: 10px;
+  font-weight: 700;
+  animation: popIn .6s ease .2s both;
+}
+
+/* Buton hover animasyonu */
+#hero button:hover{
+  transform: translateY(-2px);
+  transition: transform .15s ease;
+}
+
+/* Sections */
+section{
+  padding: 40px 20px;
+}
+
+/* Cards alanı */
+.cards{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card{
+  background: #f4f4f4;
+  padding: 20px;
+  flex: 1;
+  min-width: 240px;
+  border-radius: 14px;
+
+  /* Scroll animasyonu için başlangıç durumu */
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.card.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover{
+  box-shadow: 0 12px 34px rgba(0,0,0,.12);
+  transform: translateY(-3px);
+  background: #ffffff;
+}
+
+.card-img{
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* Form */
+form{
+  max-width: 420px;
+}
+
+form input, form textarea{
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+}
+
+form input:focus, form textarea:focus{
+  border-color: #2575fc;
+}
+
+form button{
+  background: #2575fc;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+form button:hover{
+  transform: translateY(-2px);
+  transition: transform .15s ease;
+}
+
+/* Footer (foster -> footer düzeltildi) */
+footer{
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cards{
+    flex-direction: column;
+  }
+  #hero h2{
+    font-size: 32px;
+  }
+}
+
+/* Animasyon keyframes */
+@keyframes slideDown{
+  from{ opacity:0; transform: translateY(-14px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+@keyframes fadeUp{
+  from{ opacity:0; transform: translateY(14px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+@keyframes popIn{
+  from{ opacity:0; transform: scale(.96); }
+  to{ opacity:1; transform: scale(1); }
+}
